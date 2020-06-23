@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timerlib',['TimerLib',['../uTimerLib_8cpp.html#afb65a362624b4857355afadf2071f49e',1,'TimerLib():&#160;uTimerLib.cpp'],['../uTimerLib_8h.html#afb65a362624b4857355afadf2071f49e',1,'TimerLib():&#160;uTimerLib.cpp']]]
+  ['timerlib_38',['TimerLib',['../uTimerLib_8h.html#afb65a362624b4857355afadf2071f49e',1,'uTimerLib.UNSUPPORTED.cpp']]]
 ];
