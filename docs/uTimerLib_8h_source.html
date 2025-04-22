@@ -112,89 +112,87 @@ $(function() {
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classuTimerLib.html#a9bd139ff00e4083fd902cf98582a2925">   91</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classuTimerLib.html#a9bd139ff00e4083fd902cf98582a2925">clearTimer</a>();</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classuTimerLib.html#af398695da9caaa541ff57017f744fc84">  100</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classuTimerLib.html#af398695da9caaa541ff57017f744fc84">_interrupt</a>();</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">            #if defined(_VARIANT_ARDUINO_STM32_) || defined(ARDUINO_ARCH_STM32)</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                <span class="comment">// ST&#39;s Arduino Core STM32, https://github.com/stm32duino/Arduino_Core_STM32</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">                #ifdef BOARD_NAME</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                    <span class="keyword">static</span> callback_function_t interrupt();</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                <span class="comment">// Roger Clark Arduino STM32, https://github.com/rogerclarkmelbourne/Arduino_STM32</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">                #else</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                    <span class="keyword">static</span> <span class="keywordtype">void</span> interrupt();</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">                #endif</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">            #if defined(ARDUINO_ARCH_ESP32)</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                <span class="keyword">static</span> <span class="keywordtype">void</span> interrupt(<span class="keywordtype">void</span>* arg);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">            #if defined(ARDUINO_ARCH_ESP8266)</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">                #pragma message &quot;ESP8266 can only reach a ms resolution so any us interrupt will be rounded to that&quot;</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                <span class="keyword">static</span> <span class="keywordtype">void</span> interrupt();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">            #ifdef _SAMD21_</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                TcCount16* _TC = (TcCount16*) TC3;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">            #ifdef __SAMD51__</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">                #pragma message &quot;SAMD51 support is still experimental&quot;</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keyword">static</span> <a class="code hl_class" href="classuTimerLib.html">uTimerLib</a> *_instance;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> _overflows = 0;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __overflows = 0;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">            #ifdef ARDUINO_ARCH_AVR</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _remaining = 0;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> __remaining = 0;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="preprocessor">            #else</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> _remaining = 0;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __remaining = 0;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            void (*_cb)() = NULL;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _type = <a class="code hl_define" href="uTimerLib_8h.html#afd856fbe2a0a1d50a4a20f562577e229">UTIMERLIB_TYPE_OFF</a>;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="keywordtype">void</span> _loadRemaining();</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            <span class="keywordtype">void</span> _attachInterrupt_us(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            <span class="keywordtype">void</span> _attachInterrupt_s(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">            #if defined(_VARIANT_ARDUINO_STM32_) || defined(ARDUINO_ARCH_STM32)</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                <span class="keywordtype">bool</span> _toInit = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">            #if defined(_VARIANT_ARDUINO_STM32_) || defined(ARDUINO_ARCH_STM32)</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                <span class="keyword">volatile</span> <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> _overflows;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                <span class="keyword">volatile</span> <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __overflows;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <span class="keyword">volatile</span> <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> _remaining;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                <span class="keyword">volatile</span> <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __remaining;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                <span class="keyword">static</span> void (*_cb)();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classuTimerLib.html#af398695da9caaa541ff57017f744fc84">_interrupt</a>();</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                <span class="keyword">volatile</span> <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _type;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">            #else</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classuTimerLib.html#af398695da9caaa541ff57017f744fc84">  109</a></span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classuTimerLib.html#af398695da9caaa541ff57017f744fc84">_interrupt</a>();                  </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">            #endif</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                    </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">            #if defined(ARDUINO_ARCH_ESP32)</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                <span class="keyword">static</span> <span class="keywordtype">void</span> interrupt(<span class="keywordtype">void</span>* arg);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">            #endif</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">            #if defined(ARDUINO_ARCH_ESP8266)</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">                #pragma message &quot;ESP8266 can only reach a ms resolution so any us interrupt will be rounded to that&quot;</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                <span class="keyword">static</span> <span class="keywordtype">void</span> interrupt();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">            #endif</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">            #ifdef _SAMD21_</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                TcCount16* _TC = (TcCount16*) TC3;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="preprocessor">            #endif</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">            #ifdef __SAMD51__</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">                #pragma message &quot;SAMD51 support is still experimental&quot;</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">            #endif</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            <span class="keyword">static</span> <a class="code hl_class" href="classuTimerLib.html">uTimerLib</a> *_instance;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">            #if defined(_VARIANT_ARDUINO_STM32_) || defined(ARDUINO_ARCH_STM32)</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                <span class="keywordtype">bool</span> _toInit = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                <span class="comment">// ST&#39;s Arduino Core STM32, https://github.com/stm32duino/Arduino_Core_STM32</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="preprocessor">                #ifdef BOARD_NAME</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                     HardwareTimer *Timer3 = <span class="keyword">new</span> HardwareTimer(TIM3);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="preprocessor">                #endif</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="preprocessor">            #else</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> _overflows = 0;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __overflows = 0;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="preprocessor">                #ifdef ARDUINO_ARCH_AVR</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                    <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _remaining = 0;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                    <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> __remaining = 0;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="preprocessor">                #else</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                    <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> _remaining = 0;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                    <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> __remaining = 0;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="preprocessor">                #endif</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                void (*_cb)() = NULL;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>                <span class="keyword">volatile</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _type = <a class="code hl_define" href="uTimerLib_8h.html#afd856fbe2a0a1d50a4a20f562577e229">UTIMERLIB_TYPE_OFF</a>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="preprocessor">            #endif</span></div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                <span class="comment">// ST&#39;s Arduino Core STM32, https://github.com/stm32duino/Arduino_Core_STM32</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="preprocessor">                #ifdef BOARD_NAME</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                     HardwareTimer *Timer3 = <span class="keyword">new</span> HardwareTimer(TIM3);</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                <span class="comment">// Roger Clark Arduino STM32, https://github.com/rogerclarkmelbourne/Arduino_STM32</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="preprocessor">                #endif</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="preprocessor">            #if defined(ARDUINO_ARCH_ESP32)</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                esp_timer_handle_t _timer;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="preprocessor">            #if defined(ARDUINO_ARCH_ESP8266)</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                Ticker _ticker;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="preprocessor">            #endif</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    };</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keyword">extern</span> <a class="code hl_class" href="classuTimerLib.html">uTimerLib</a> <a class="code hl_variable" href="uTimerLib_8h.html#afb65a362624b4857355afadf2071f49e">TimerLib</a>;</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="keywordtype">void</span> _loadRemaining();</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="keywordtype">void</span> _attachInterrupt_us(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordtype">void</span> _attachInterrupt_s(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="preprocessor">            #if defined(ARDUINO_ARCH_ESP32)</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                esp_timer_handle_t _timer;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="preprocessor">            #endif</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="preprocessor">            #if defined(ARDUINO_ARCH_ESP8266)</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                Ticker _ticker;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="preprocessor">            #endif</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    };</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keyword">extern</span> <a class="code hl_class" href="classuTimerLib.html">uTimerLib</a> <a class="code hl_variable" href="uTimerLib_8h.html#afb65a362624b4857355afadf2071f49e">TimerLib</a>;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
 <div class="ttc" id="aclassuTimerLib_html"><div class="ttname"><a href="classuTimerLib.html">uTimerLib</a></div><div class="ttdoc">Arduino tiny and cross-device compatible timer library.</div><div class="ttdef"><b>Definition:</b> uTimerLib.h:78</div></div>
 <div class="ttc" id="aclassuTimerLib_html_a21fd5e64f88e73a33ca69233ed0b9bac"><div class="ttname"><a href="classuTimerLib.html#a21fd5e64f88e73a33ca69233ed0b9bac">uTimerLib::setTimeout_us</a></div><div class="ttdeci">void setTimeout_us(void(*)(), unsigned long int)</div><div class="ttdoc">Attaches a callback function to be executed once when us microseconds have passed.</div><div class="ttdef"><b>Definition:</b> uTimerLib.cpp:74</div></div>
-<div class="ttc" id="aclassuTimerLib_html_a7def88c35a2326fbccaec9920d2310b5"><div class="ttname"><a href="classuTimerLib.html#a7def88c35a2326fbccaec9920d2310b5">uTimerLib::setInterval_us</a></div><div class="ttdeci">void setInterval_us(void(*)(), unsigned long int)</div><div class="ttdoc">Attaches a callback function to be executed each us microseconds.</div><div class="ttdef"><b>Definition:</b> uTimerLib.cpp:60</div></div>
-<div class="ttc" id="aclassuTimerLib_html_a854ecb39b803b72f37ae15b6f2f5881a"><div class="ttname"><a href="classuTimerLib.html#a854ecb39b803b72f37ae15b6f2f5881a">uTimerLib::setInterval_s</a></div><div class="ttdeci">void setInterval_s(void(*)(), unsigned long int)</div><div class="ttdoc">Attaches a callback function to be executed each s seconds.</div><div class="ttdef"><b>Definition:</b> uTimerLib.cpp:88</div></div>
+<div class="ttc" id="aclassuTimerLib_html_a7def88c35a2326fbccaec9920d2310b5"><div class="ttname"><a href="classuTimerLib.html#a7def88c35a2326fbccaec9920d2310b5">uTimerLib::setInterval_us</a></div><div class="ttdeci">void setInterval_us(void(*)(), unsigned long int)</div><div class="ttdoc">Attaches a callback function to be executed each us microseconds.</div><div class="ttdef"><b>Definition:</b> uTimerLib.cpp:55</div></div>
+<div class="ttc" id="aclassuTimerLib_html_a854ecb39b803b72f37ae15b6f2f5881a"><div class="ttname"><a href="classuTimerLib.html#a854ecb39b803b72f37ae15b6f2f5881a">uTimerLib::setInterval_s</a></div><div class="ttdeci">void setInterval_s(void(*)(), unsigned long int)</div><div class="ttdoc">Attaches a callback function to be executed each s seconds.</div><div class="ttdef"><b>Definition:</b> uTimerLib.cpp:93</div></div>
 <div class="ttc" id="aclassuTimerLib_html_a8974a9b18f7a78027823c3f16535ccdd"><div class="ttname"><a href="classuTimerLib.html#a8974a9b18f7a78027823c3f16535ccdd">uTimerLib::uTimerLib</a></div><div class="ttdeci">uTimerLib()</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> uTimerLib.cpp:47</div></div>
 <div class="ttc" id="aclassuTimerLib_html_a9bd139ff00e4083fd902cf98582a2925"><div class="ttname"><a href="classuTimerLib.html#a9bd139ff00e4083fd902cf98582a2925">uTimerLib::clearTimer</a></div><div class="ttdeci">void clearTimer()</div><div class="ttdoc">Loads last bit of time needed to precisely count until desired time (non complete loop)</div></div>
-<div class="ttc" id="aclassuTimerLib_html_ac517490c5db52264053b60f36608b524"><div class="ttname"><a href="classuTimerLib.html#ac517490c5db52264053b60f36608b524">uTimerLib::setTimeout_s</a></div><div class="ttdeci">void setTimeout_s(void(*)(), unsigned long int)</div><div class="ttdoc">Attaches a callback function to be executed once when s seconds have passed.</div><div class="ttdef"><b>Definition:</b> uTimerLib.cpp:102</div></div>
+<div class="ttc" id="aclassuTimerLib_html_ac517490c5db52264053b60f36608b524"><div class="ttname"><a href="classuTimerLib.html#ac517490c5db52264053b60f36608b524">uTimerLib::setTimeout_s</a></div><div class="ttdeci">void setTimeout_s(void(*)(), unsigned long int)</div><div class="ttdoc">Attaches a callback function to be executed once when s seconds have passed.</div><div class="ttdef"><b>Definition:</b> uTimerLib.cpp:112</div></div>
 <div class="ttc" id="aclassuTimerLib_html_af398695da9caaa541ff57017f744fc84"><div class="ttname"><a href="classuTimerLib.html#af398695da9caaa541ff57017f744fc84">uTimerLib::_interrupt</a></div><div class="ttdeci">void _interrupt()</div><div class="ttdoc">Internal intermediate function to control timer interrupts.</div></div>
 <div class="ttc" id="auTimerLib_8h_html_afb65a362624b4857355afadf2071f49e"><div class="ttname"><a href="uTimerLib_8h.html#afb65a362624b4857355afadf2071f49e">TimerLib</a></div><div class="ttdeci">uTimerLib TimerLib</div><div class="ttdoc">Declares TimerLib variable to access this library's methods.</div></div>
 <div class="ttc" id="auTimerLib_8h_html_afd856fbe2a0a1d50a4a20f562577e229"><div class="ttname"><a href="uTimerLib_8h.html#afd856fbe2a0a1d50a4a20f562577e229">UTIMERLIB_TYPE_OFF</a></div><div class="ttdeci">#define UTIMERLIB_TYPE_OFF</div><div class="ttdoc">Internal status.</div><div class="ttdef"><b>Definition:</b> uTimerLib.h:55</div></div>
